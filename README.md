@@ -70,6 +70,32 @@
     available somewhere in the interface.
     - Hosting the game is your responsibility.
 
+## Questions at the start:
+
+    * 1. How much is the payout for the winner games?
+    We need to keep the Operator profitable, so we keep 100 credits after each games
+    for the Operator. We will give back 400 credits to the winners after each game. Games,
+    with 5 correct guesses are more valuable than games with 4 correct guesses and happen
+    less often, so these should be worth more, etc. We are going to devide the amout, which
+    is going to be given back to the winners, according to the number of winning games with
+    the specific number of correct guesses and the probability of occurance of these number
+    of right guesses in each game.
+
+    * 2. Where should we save the state of the game?
+    The game does not require any user authentication, so the simplest solution is just saving
+    everything in the local storage. This has an advantage and a disadvantage too. The advantage is
+    that we can use the local storage of the browser, so no server side code required. The
+    disadvantage is that the Operator and Player should play in the same browser on the same device.
+    I will choose local storage, because it is a React developer position, so the main focus should
+    not be on my server side programming knowledge. I can assure you that I could go on the other way
+    with user authentication too, if the given time was longer.
+
+    * 3. How well should be the game logic separated from the UI logic?
+    I start with keeping the game logic within the React components and if I had time I could refactor
+    the code to separate the game logic. Redux could be a great help here, but the time is short enough
+    to tolerate some level of prop drilling and less separation of concerns, so I will go on the easier
+    way as a start then I can refactor if I have time.
+
 ## React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
