@@ -7,11 +7,16 @@
 
 .app {
   opacity: 0;
-  transform: translateY(-2em);
-  transition: all 300ms ease-in;
+  transform: translateY(-5em);
+  transition: all 600ms ease-in;
 }
 
 .show {
   opacity: 1;
   transform: none;
+}
+
+.landing-img {
+  height: calc(100vh - 20em);
+  width: auto;
 }
