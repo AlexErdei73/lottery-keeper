@@ -4,7 +4,10 @@ import lottoPic from "./assets/images/lotteryticket.avif";
 import Modal from "./components/Modal";
 
 function App() {
-  const [state, setState] = useState({});
+  const [state, setState] = useState({
+    isPlayer: false,
+    isOperator: false,
+  });
 
   const [openModal, setOpenModal] = useState(false);
 
@@ -16,13 +19,13 @@ function App() {
       const appNode = document.querySelector(".app");
       appNode.classList.add("show");
     }, 0);
-    setInterval(() => {
+    const interval = setInterval(() => {
       const titleNode = document.querySelector("h1");
       titleNode.classList.toggle("color-change");
-    }, 600);
+    }, 1000);
   }, []);
 
-  return (
+  const openingPage = (
     <div className="app">
       <h1>Lotto Keeper</h1>
       <div className="img-container">
@@ -35,11 +38,21 @@ function App() {
       <button type="button" onClick={() => setOpenModal(true)}>
         Entrance
       </button>
-      <Modal openModal={openModal} closeModal={closeModal}>
-        This is my modal.
+      <Modal
+        openModal={openModal}
+        closeModal={closeModal}
+        headerText="Question"
+      >
+        Which character are you playing?
+        <div className="buttons">
+          <button>Player</button>
+          <button>Operator</button>
+        </div>
       </Modal>
     </div>
   );
+
+  return <>{openingPage}</>;
 }
 
 export default App;

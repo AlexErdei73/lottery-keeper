@@ -13,6 +13,21 @@ dialog[open] {
 
 dialog .head {
   background-color: var(--link-color);
+  position: relative;
+}
+
+button.close {
+  border: none;
+  background-color: var(--link-color);
+  padding: 0.09em;
+  position: absolute;
+  top: 0;
+  right: 0.25em;
+}
+
+button.close:hover {
+  background-color: var(--link-hover-color);
+  color: white;
 }
 
 dialog .body {

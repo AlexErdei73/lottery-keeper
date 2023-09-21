@@ -35,3 +35,9 @@ h1 {
 .color-change {
   color: var(--link-color);
 }
+
+dialog .buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}

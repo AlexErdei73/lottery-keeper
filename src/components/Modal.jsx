@@ -25,13 +25,23 @@ function Modal({ openModal, closeModal, children, headerText = "Dialog" }) {
   }, [openModal]);
 
   return (
-    <div className="cover" ref={cover}>
+    <div className="cover" ref={cover} onClick={closeModal}>
       <dialog ref={dialog} onCancel={closeModal}>
-        <div className="head">{headerText}</div>
-        <div className="body">
-          {children}
-          <button onClick={closeModal}>Close</button>
+        <div className="head">
+          <button
+            type="button"
+            className="close"
+            onClick={closeModal}
+            area-aria-labelledby="tac"
+          >
+            X
+          </button>
+          <span id="tac" hidden>
+            Close
+          </span>
+          {headerText}
         </div>
+        <div className="body">{children}</div>
       </dialog>
     </div>
   );
