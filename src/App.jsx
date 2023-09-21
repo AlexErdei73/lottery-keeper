@@ -9,6 +9,17 @@ function App() {
 	const [state, setState] = useState({
 		isPlayer: false,
 		isOperator: false,
+		player: {
+			name: "Player",
+			balance: 10000,
+			games: [],
+		},
+		operator: {
+			balance: 0,
+			games: [],
+		},
+		draws: [],
+		allGames: [],
 	});
 
 	const [openModal, setOpenModal] = useState(false);
@@ -27,7 +38,6 @@ function App() {
 			newState.isPlayer = false;
 			newState.isOperator = false;
 		}
-		console.log(newState);
 		setState(newState);
 	}
 
