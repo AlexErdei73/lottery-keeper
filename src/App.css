@@ -1,34 +1,37 @@
 #root {
-	max-width: 1280px;
-	width: 100vw;
-	margin: 0 auto;
-	padding: 2rem;
-	text-align: center;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
 }
 
 .app {
-	opacity: 0;
-	transform: translateY(-5em);
-	transition: all 600ms ease-in;
+  opacity: 0;
+  transform: translateY(-5em);
+  transition: all 600ms ease-in;
 }
 
 .show {
-	opacity: 1;
-	transform: none;
+  opacity: 1;
+  transform: none;
 }
 
 .img-container {
-	width: 30rem;
-	max-width: 70vw;
-	margin: auto;
+  width: 30rem;
+  max-width: 70vw;
+  margin: auto;
 }
 
 .landing-img {
-	height: auto;
-	width: 100%;
-	border-radius: 0.5rem;
+  height: auto;
+  width: 100%;
+  border-radius: 0.5rem;
 }
 
 h1 {
-	font-size: 2em;
+  font-size: 2em;
+  transition: color 600ms linear;
+}
+
+.color-change {
+  color: var(--link-color);
 }

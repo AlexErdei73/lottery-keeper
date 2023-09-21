@@ -1,0 +1,35 @@
+dialog {
+  padding: 0;
+  margin: auto;
+  border: 2px solid var(--link-color);
+  border-radius: 0.5em;
+  width: 20em;
+  height: fit-content;
+}
+
+dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+dialog .head {
+  background-color: var(--link-color);
+}
+
+dialog .body {
+  padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+.cover {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.9;
+  z-index: 1;
+}

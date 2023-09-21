@@ -1,23 +1,32 @@
 // Modal as a separate component
 import { useEffect, useRef } from "react";
+import "./modal.css";
 
-function Modal({ openModal, closeModal, children }) {
-	const ref = useRef();
+function Modal({ openModal, closeModal, children, headerText = "Dialog" }) {
+  const dialog = useRef();
+  const cover = useRef();
 
-	useEffect(() => {
-		if (openModal) {
-			ref.current.showModal();
-		} else {
-			ref.current.close();
-		}
-	}, [openModal]);
+  useEffect(() => {
+    if (openModal) {
+      dialog.current.showModal();
+      cover.current.style = "display: flex";
+    } else {
+      dialog.current.close();
+      cover.current.style = "";
+    }
+  }, [openModal]);
 
-	return (
-		<dialog ref={ref} onCancel={closeModal}>
-			{children}
-			<button onClick={closeModal}>Close</button>
-		</dialog>
-	);
+  return (
+    <div className="cover" ref={cover}>
+      <dialog ref={dialog} onCancel={closeModal}>
+        <div className="head">{headerText}</div>
+        <div className="body">
+          {children}
+          <button onClick={closeModal}>Close</button>
+        </div>
+      </dialog>
+    </div>
+  );
 }
 
 export default Modal;
