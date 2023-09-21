@@ -4,7 +4,6 @@ dialog {
   border: 2px solid var(--link-color);
   border-radius: 0.5em;
   width: 20em;
-  height: fit-content;
 }
 
 dialog[open] {
@@ -31,5 +30,15 @@ dialog .body {
   height: 100vh;
   background-color: black;
   opacity: 0.9;
-  z-index: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.5;
+    transform: translateY(-5em);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }

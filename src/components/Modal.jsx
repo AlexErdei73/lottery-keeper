@@ -9,10 +9,18 @@ function Modal({ openModal, closeModal, children, headerText = "Dialog" }) {
   useEffect(() => {
     if (openModal) {
       dialog.current.showModal();
+      dialog.current.style.animation = "600ms fadeIn";
       cover.current.style = "display: flex";
+      setTimeout(() => {
+        dialog.current.style.animation = "";
+      }, 600);
     } else {
-      dialog.current.close();
-      cover.current.style = "";
+      dialog.current.style.animation = "600ms reverse fadeIn";
+      setTimeout(() => {
+        dialog.current.close();
+        dialog.current.style = "";
+        cover.current.style = "";
+      }, 600);
     }
   }, [openModal]);
 
