@@ -2,19 +2,19 @@ import { useState, react } from "react";
 import Modal from "./Modal";
 
 const Player = ({ state, setState, goBack }) => {
-  const [openModal, setOpenModal] = useState(false);
+  const [openNameModal, setOpenNameModal] = useState(false);
   const [name, setName] = useState(state.player.name);
 
-  const handleNameClick = () => setOpenModal(true);
-  const closeModal = () => setOpenModal(false);
-  const handleSubmit = (event) => {
+  const handleNameClick = () => setOpenNameModal(true);
+  const closeNameModal = () => setOpenNameModal(false);
+  const handleNameSubmit = (event) => {
     event.preventDefault();
     const newState = JSON.parse(JSON.stringify(state));
     newState.player.name = name;
-    console.log(newState);
     setState(newState);
-    closeModal();
+    closeNameModal();
   };
+  const handleGameClick = () => {};
 
   return (
     <>
@@ -25,17 +25,20 @@ const Player = ({ state, setState, goBack }) => {
         <button type="button" onClick={handleNameClick}>
           Name
         </button>
+        <button type="button" onClick={handleGameClick}>
+          Game
+        </button>
         <button type="button" onClick={goBack}>
           Back
         </button>
       </div>
 
       <Modal
-        openModal={openModal}
-        closeModal={closeModal}
+        openModal={openNameModal}
+        closeModal={closeNameModal}
         headerText="Chnge Name"
       >
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleNameSubmit}>
           <div className="form-input">
             <label htmlFor="name">Name:*</label>
             <input
