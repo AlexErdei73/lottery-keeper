@@ -25,7 +25,14 @@ function Modal({ openModal, closeModal, children, headerText = "Dialog" }) {
   }, [openModal]);
 
   return (
-    <div className="cover" ref={cover} onClick={closeModal}>
+    <div
+      className="cover"
+      ref={cover}
+      onClick={(event) => {
+        if (event.target !== event.currentTarget) return;
+        closeModal();
+      }}
+    >
       <dialog ref={dialog} onCancel={closeModal}>
         <div className="head">
           <button
