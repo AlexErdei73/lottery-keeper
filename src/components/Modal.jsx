@@ -30,8 +30,6 @@ function Modal({ openModal, closeModal, children, headerText = "Dialog" }) {
         ref={dialog}
         onCancel={closeModal}
         onClick={(event) => {
-          console.log(event.target);
-          console.log(event.currentTarget);
           if (event.target !== event.currentTarget) return;
           closeModal();
         }}

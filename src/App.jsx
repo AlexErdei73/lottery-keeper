@@ -12,14 +12,12 @@ function App() {
     player: {
       name: "Player",
       balance: 10000,
-      games: [],
     },
     operator: {
       balance: 0,
-      games: [],
     },
     draws: [],
-    allGames: [],
+    games: [],
   });
 
   const [openModal, setOpenModal] = useState(false);

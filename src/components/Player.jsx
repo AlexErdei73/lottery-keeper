@@ -1,11 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "./Modal";
 import GameImage from "./GameImage";
+import { areNumbersValid } from "../gamelogic/general";
+import { submitNumbers } from "../gamelogic/player";
 import "./player.css";
 
 const Player = ({ state, setState, goBack }) => {
+  const NUMBERS_ERROR = "Different numbers are required!";
+  const LOW_CREDIT_ERROR = "Your credit is too low to play!";
+  const NUMBERS_MSG =
+    "Choose 5 different numbers between 1 and 39. The game costs 500 credits.";
+
   const [openNameModal, setOpenNameModal] = useState(false);
-  const [openNumbersModal, setOpenNumbersModal] = useState(false);
+  const [numbersModal, setNumbersModal] = useState({
+    open: false,
+    msg: NUMBERS_MSG,
+  });
 
   const [name, setName] = useState(state.player.name);
   const [numbers, setNumbers] = useState([1, 2, 3, 4, 5]);
@@ -19,13 +29,33 @@ const Player = ({ state, setState, goBack }) => {
     setState(newState);
     closeNameModal();
   };
-  const handleGameClick = () => setOpenNumbersModal(true);
-  const closeNumbersModal = () => setOpenNumbersModal(false);
+  const handleGameClick = () =>
+    setNumbersModal({ open: true, msg: numbersModal.msg });
+  const closeNumbersModal = () =>
+    setNumbersModal({ open: false, msg: NUMBERS_MSG });
   const handleNumbersSubmit = (event) => {
     event.preventDefault();
-    console.log(numbers);
+    if (!areNumbersValid(numbers)) {
+      setNumbersModal({
+        open: true,
+        msg: NUMBERS_ERROR,
+      });
+      return;
+    }
+    if (state.player.credit < 500) {
+      setNumbersModal({
+        open: true,
+        msg: LOW_CREDIT_ERROR,
+      });
+      return;
+    }
+    submitNumbers(numbers, state, setState);
     closeNumbersModal();
   };
+
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
 
   const numberInputJSX = (number, index) => {
     const grammarTags = ["st", "nd", "rd", "th", "th"];
@@ -92,14 +122,11 @@ const Player = ({ state, setState, goBack }) => {
       </Modal>
 
       <Modal
-        openModal={openNumbersModal}
+        openModal={numbersModal.open}
         closeModal={closeNumbersModal}
         headerText="Choose Winner Numbers"
       >
-        <p>
-          Choose 5 different numbers between 1 and 39. The game costs 500
-          credits.
-        </p>
+        <p>{numbersModal.msg}</p>
         <form onSubmit={handleNumbersSubmit}>
           <div className="number-inputs">
             {numbers.map((number, index) => numberInputJSX(number, index))}
