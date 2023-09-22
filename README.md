@@ -96,6 +96,27 @@
     to tolerate some level of prop drilling and less separation of concerns, so I will go on the easier
     way as a start then I can refactor if I have time.
 
+    As I proceed it seems to be better to separate the game logic from the UI better. In this case it is
+    not going to be OOP, because React has a different data driven code organization style, which is against
+    OOP encapsulation. The best solution would be to include Redux to decouple the state from the App
+    component. In that case, we could use OOP game logic with encapsulation and Redux could update the state
+    for us for the UI. It sounds great but it would slow me down, so I choose different way, which is better
+    for the size of the problem.
+
+    I create a game logic module with functions, which get the state object and operate on that. The public
+    functions of this module will be called from the UI, when it is necessary and the UI reflects the state
+    changes. Maybe later we can separate this module for three different ones, which contain the functions for
+    the player and the operator respectively and for the commonly used ones.
+
+## Questions during development
+
+    * 1. Shall I write a custom widget, which looks like a lottery ticket?
+    I like this idea, because it can look really good and usable well. The main issue is accessibility. To make
+    it accessible and test it acoordingly takes long time, so I instead choose a form with validation. It is
+    much simpler and accessible out of the box. The only disadvantage is that it looks not so well. The given
+    timeframe is short and accessibility and usability of the UI is more important than the look, so I choose
+    this solution.
+
 ## React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
