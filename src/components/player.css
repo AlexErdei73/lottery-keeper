@@ -1,0 +1,8 @@
+.number-inputs {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.number-inputs input {
+  width: 3em;
+}

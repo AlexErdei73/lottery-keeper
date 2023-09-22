@@ -1,61 +1,66 @@
 dialog {
-	padding: 0;
-	margin: auto;
-	border: 2px solid var(--link-color);
-	border-radius: 0.5em;
-	width: 20em;
-	color: var(--color);
-	background-color: var(--background-color);
+  padding: 0;
+  margin: auto;
+  border: 2px solid var(--link-color);
+  border-radius: 0.5em;
+  width: 20em;
+  color: var(--color);
+  background-color: var(--background-color);
+  position: relative;
 }
 
 dialog[open] {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 dialog .head {
-	background-color: var(--link-color);
-	position: relative;
+  background-color: var(--link-color);
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 button.close {
-	border: none;
-	background-color: var(--link-color);
-	padding: 0.09em;
-	position: absolute;
-	top: 0;
-	right: 0.25em;
+  border: none;
+  background-color: var(--link-color);
+  padding: 0.09em;
+  position: absolute;
+  top: 0;
+  right: 0.25em;
 }
 
 button.close:hover {
-	background-color: var(--link-hover-color);
-	color: white;
+  background-color: var(--link-hover-color);
+  color: white;
 }
 
 dialog .body {
-	padding: 0.5em;
-	display: flex;
-	flex-direction: column;
+  margin-top: 2em;
+  padding: 0.5em;
+  display: flex;
+  flex-direction: column;
 }
 
 .cover {
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	background-color: black;
-	opacity: 0.9;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.9;
 }
 
 @keyframes fadeIn {
-	from {
-		opacity: 0.5;
-		transform: translateY(-5em);
-	}
-	to {
-		opacity: 1;
-		transform: none;
-	}
+  from {
+    opacity: 0.5;
+    transform: translateY(-5em);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }

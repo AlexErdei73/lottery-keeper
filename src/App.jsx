@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
-import lottoPic from "./assets/images/lotteryticket.avif";
 import Modal from "./components/Modal";
 import Player from "./components/Player";
 import Operator from "./components/Operator";
+import GameImage from "./components/GameImage";
 
 function App() {
   const [state, setState] = useState({
@@ -60,13 +60,7 @@ function App() {
   const openingPage = (
     <>
       <h1 className="color-change" /*ref={title}*/>Lotto Keeper</h1>
-      <div className="img-container">
-        <img
-          className="landing-img"
-          src={lottoPic}
-          alt="lottery ticket image"
-        />
-      </div>
+      <GameImage />
       <button type="button" onClick={() => setOpenModal(true)}>
         Entrance
       </button>
