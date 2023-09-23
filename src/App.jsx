@@ -7,8 +7,6 @@ import GameImage from "./components/GameImage";
 
 function App() {
   const [state, setState] = useState({
-    isPlayer: false,
-    isOperator: false,
     player: {
       name: "Player",
       balance: 10000,
@@ -20,44 +18,26 @@ function App() {
     games: [],
   });
 
+  const [page, setPage] = useState("opening");
   const [openModal, setOpenModal] = useState(false);
 
   const closeModal = () => setOpenModal(false);
 
-  function handleRoleClick(roleIndex) {
-    const roles = ["Player", "Operator"];
-    const newState = { ...state };
-    if (roleIndex >= 0) {
-      const trueRole = roles[roleIndex];
-      const falseRole = roles[1 - roleIndex];
-      newState[`is${trueRole}`] = true;
-      newState[`is${falseRole}`] = false;
-    } else {
-      newState.isPlayer = false;
-      newState.isOperator = false;
-    }
-    setState(newState);
-  }
-
-  const handlePlayerClick = () => handleRoleClick(0);
-  const handleOperatorClick = () => handleRoleClick(1);
-  const handleBackClick = () => handleRoleClick(-1);
+  const handlePlayerClick = () => setPage("player");
+  const handleOperatorClick = () => setPage("operator");
+  const handleBackClick = () => setPage("opening");
 
   /* Little opening animation */
-  //const title = useRef();
   const appNode = useRef();
   useEffect(() => {
     setTimeout(() => {
       appNode.current.classList.add("show");
     }, 0);
-    /*setInterval(() => {
-			title.current.classList.toggle("color-change");
-		}, 1000);*/
   }, []);
 
   const openingPage = (
     <>
-      <h1 className="color-change" /*ref={title}*/>Lotto Keeper</h1>
+      <h1 className="color-change">Lotto Keeper</h1>
       <GameImage />
       <button type="button" onClick={() => setOpenModal(true)}>
         Entrance
@@ -82,15 +62,15 @@ function App() {
 
   return (
     <div className="app" ref={appNode}>
-      {!(state.isPlayer || state.isOperator) && openingPage}
-      {state.isPlayer && (
+      {page === "opening" && openingPage}
+      {page === "player" && (
         <Player
           state={state}
           setState={setState}
           goBack={handleBackClick}
         ></Player>
       )}
-      {state.isOperator && (
+      {page === "operator" && (
         <Operator state={state} goBack={handleBackClick}></Operator>
       )}
     </div>
