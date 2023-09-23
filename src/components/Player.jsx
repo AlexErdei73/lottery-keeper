@@ -57,10 +57,6 @@ const Player = ({ state, setState, goBack }) => {
   const handleTicketsClick = () => setShowTickets(true);
   const showPlayersPage = () => setShowTickets(false);
 
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
-
   const numberInputJSX = (number, index) => {
     return (
       <div className="form-input" key={index}>
@@ -95,7 +91,11 @@ const Player = ({ state, setState, goBack }) => {
             <button type="button" onClick={handleGameClick}>
               Game
             </button>
-            <button type="button" onClick={handleTicketsClick}>
+            <button
+              type="button"
+              onClick={handleTicketsClick}
+              disabled={state.games.length === 0}
+            >
               Tickets
             </button>
             <button type="button" onClick={goBack}>
