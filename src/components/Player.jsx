@@ -58,13 +58,8 @@ const Player = ({ state, setState, goBack }) => {
   }, [state]);
 
   const numberInputJSX = (number, index) => {
-    const grammarTags = ["st", "nd", "rd", "th", "th"];
     return (
       <div className="form-input" key={index}>
-        <label htmlFor="name">
-          {index + 1}
-          {grammarTags[index]} num:*
-        </label>
         <input
           type="number"
           id={`number-${index}`}

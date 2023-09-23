@@ -37,7 +37,6 @@ button.close:hover {
 }
 
 dialog .body {
-  margin-top: 2em;
   padding: 0.5em;
   display: flex;
   flex-direction: column;
