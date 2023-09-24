@@ -2,6 +2,7 @@ import { useState } from "react";
 import Modal from "./Modal";
 import GameImage from "./GameImage";
 import Tickets from "./Tickets";
+import Header from "./Header";
 import { areNumbersValid } from "../gamelogic/general";
 import { submitNumbers } from "../gamelogic/player";
 import "./player.css";
@@ -79,41 +80,35 @@ const Player = ({ state, setState, goBack }) => {
 
   return (
     <>
+      <Header role={state.player} />
       {!showTickets && (
-        <>
-          <header>
-            <h1 className="color-change">
-              Welcome, <output>{state.player.name}</output>
-            </h1>
-            <div className="balance color-change">
-              Available Credit: <output>{state.player.balance}</output>
-            </div>
-          </header>
-          <main>
-            <div className="buttons">
-              <button type="button" onClick={handleNameClick}>
-                Name
-              </button>
-              <button type="button" onClick={handleGameClick}>
-                Game
-              </button>
-              <button
-                type="button"
-                onClick={handleTicketsClick}
-                disabled={state.games.length === 0}
-              >
-                Tickets
-              </button>
-              <button type="button" onClick={goBack}>
-                Back
-              </button>
-            </div>
-            <GameImage />
-          </main>
-        </>
+        <main>
+          <div className="buttons">
+            <button type="button" onClick={handleNameClick}>
+              Name
+            </button>
+            <button type="button" onClick={handleGameClick}>
+              Game
+            </button>
+            <button
+              type="button"
+              onClick={handleTicketsClick}
+              disabled={state.games.length === 0}
+            >
+              Tickets
+            </button>
+            <button type="button" onClick={goBack}>
+              Back
+            </button>
+          </div>
+          <GameImage />
+        </main>
       )}
-
-      {showTickets && <Tickets games={state.games} goBack={showPlayersPage} />}
+      {showTickets && (
+        <main>
+          <Tickets games={state.games} goBack={showPlayersPage} />{" "}
+        </main>
+      )}
 
       <Modal
         openModal={openNameModal}

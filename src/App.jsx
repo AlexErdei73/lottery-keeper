@@ -12,6 +12,7 @@ function App() {
       balance: 10000,
     },
     operator: {
+      name: "Operator",
       balance: 0,
     },
     draws: [],
