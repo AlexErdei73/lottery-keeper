@@ -1,10 +1,23 @@
-const Operator = ({ state, goBack }) => {
+import Header from "./Header";
+import GameImage from "./GameImage";
+import { draw } from "../gamelogic/operator";
+
+const Operator = ({ state, setState, goBack }) => {
+	const handleDrawClick = () => draw(state, setState);
 	return (
 		<>
-			<h1>Operator Page</h1>
-			<button type="button" onClick={goBack}>
-				Back
-			</button>
+			<Header role={state.operator} />
+			<main>
+				<div className="buttons">
+					<button type="button" onClick={handleDrawClick}>
+						Draw
+					</button>
+					<button type="button" onClick={goBack}>
+						Back
+					</button>
+				</div>
+				<GameImage />
+			</main>
 		</>
 	);
 };

@@ -9,6 +9,7 @@ export function submitNumbers(numbers, state, setState) {
     numbers,
     drawIndex,
     winningNumbers: [],
+    numberOfHits: 0,
     creditReward: 0,
   };
   newState.games.push(newGame);
