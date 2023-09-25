@@ -22,6 +22,7 @@ function App() {
 
 	const [page, setPage] = useState("opening");
 	const [openModal, setOpenModal] = useState(false);
+	const [openErrorModal, setOpenErrorModal] = useState(false);
 
 	useEffect(() => {
 		const savedState = localStorage.getItem("state");
@@ -32,10 +33,16 @@ function App() {
 	useEffect(() => {
 		const stateString = JSON.stringify(state);
 		if (stateString === JSON.stringify(INITIAL_STATE)) return;
-		localStorage.setItem("state", stateString);
+		try {
+			localStorage.setItem("state", stateString);
+		} catch (error) {
+			console.error(error);
+			setOpenErrorModal(true);
+		}
 	}, [state]);
 
 	const closeModal = () => setOpenModal(false);
+	const closeErrorModal = () => setOpenErrorModal(false);
 
 	const handlePlayerClick = () => setPage("player");
 	const handleOperatorClick = () => setPage("operator");
@@ -88,6 +95,19 @@ function App() {
 					setState={setState}
 					goBack={handleBackClick}></Operator>
 			)}
+
+			<Modal
+				openModal={openErrorModal}
+				closeModal={closeErrorModal}
+				headerText="Storage Error">
+				<p>
+					The local storage cannot store more data! Please reset the app to keep
+					playing and able to save the app data in the browser.
+				</p>
+				<button type="button" onClick={closeErrorModal}>
+					OK
+				</button>
+			</Modal>
 		</div>
 	);
 }
