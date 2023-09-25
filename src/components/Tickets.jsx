@@ -11,6 +11,10 @@ const Tickets = ({ state, goBack }) => {
     state.games.filter((game) => game.drawIndex === +drawIndex);
   const [games, setGames] = useState(getGames());
 
+  function getAllRewards() {
+    return games.reduce((acc, game) => acc + game.creditReward, 0);
+  }
+
   const handleTicketClick = (event) => {
     const index = +event.target.getAttribute("data-index");
     setIndex(index);
@@ -24,6 +28,9 @@ const Tickets = ({ state, goBack }) => {
   return (
     <>
       <h1 className="color-change">Tickets</h1>
+      <div>
+        All Winnings: <output>{getAllRewards()}</output>
+      </div>
       <div className="form-input">
         <label htmlFor="drawIndex">Draw Number:*</label>
         <input
