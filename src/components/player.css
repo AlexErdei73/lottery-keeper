@@ -18,9 +18,9 @@
 header {
   position: fixed;
   top: 0;
-  left: 0;
+  left: calc((100vw - 91.5rem) / 2);
   width: 100%;
-  max-width: 100rem;
+  max-width: 91.5rem;
   display: flex;
   justify-content: space-around;
   align-items: center;

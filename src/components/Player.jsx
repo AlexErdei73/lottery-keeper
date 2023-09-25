@@ -106,7 +106,7 @@ const Player = ({ state, setState, goBack }) => {
       )}
       {showTickets && (
         <main>
-          <Tickets games={state.games} goBack={showPlayersPage} />{" "}
+          <Tickets state={state} goBack={showPlayersPage} />
         </main>
       )}
 
