@@ -7,8 +7,14 @@ const Tickets = ({ state, goBack }) => {
   const [openModal, setOpenModal] = useState(false);
   const [drawIndex, setDrawIndex] = useState(state.draws.length);
 
-  const getGames = () =>
-    state.games.filter((game) => game.drawIndex === +drawIndex);
+  const getGames = () => {
+    const games = state.games.filter((game) => game.drawIndex === +drawIndex);
+    games.forEach((game, i) => {
+      game.index = i;
+    });
+    return games;
+  };
+
   const [games, setGames] = useState(getGames());
 
   function getAllRewards() {
@@ -19,6 +25,14 @@ const Tickets = ({ state, goBack }) => {
     const index = +event.target.getAttribute("data-index");
     setIndex(index);
     setOpenModal(true);
+  };
+
+  const handleSortClick = () => {
+    const newGames = [...games];
+    const sortedGames = newGames.sort(
+      (gameA, gameB) => gameB.numberOfHits - gameA.numberOfHits
+    );
+    setGames(sortedGames);
   };
 
   useEffect(() => {
@@ -45,21 +59,26 @@ const Tickets = ({ state, goBack }) => {
       </div>
       {!!games.length && (
         <div className="buttons tickets">
-          {games.map((_game, index) => (
+          {games.map((game, index) => (
             <button
               type="button"
               key={index}
               data-index={index}
               onClick={handleTicketClick}
             >
-              {index + 1}
+              {game.index + 1}
             </button>
           ))}
         </div>
       )}
-      <button type="button" onClick={goBack}>
-        Back
-      </button>
+      <div className="buttons">
+        <button type="button" onClick={handleSortClick}>
+          Sort
+        </button>
+        <button type="button" onClick={goBack}>
+          Back
+        </button>
+      </div>
 
       <TicketModal
         openModal={openModal}
