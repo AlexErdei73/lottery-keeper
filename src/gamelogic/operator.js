@@ -1,12 +1,11 @@
-import { areNumbersValid, getHitsCount } from "./general";
+import { getHitsCount } from "./general";
 
 function getWinningNumbers() {
+  const LENGTH = 5;
   const winningNumbers = [];
-  while (!areNumbersValid(winningNumbers)) {
-    for (let i = 0; i < 5; i++) {
-      const number = Math.floor(Math.random() * 39) + 1;
-      winningNumbers.push(number);
-    }
+  while (winningNumbers.length < LENGTH) {
+    const number = Math.floor(Math.random() * 39) + 1;
+    if (winningNumbers.indexOf(number) === -1) winningNumbers.push(number);
   }
   return winningNumbers;
 }
@@ -31,7 +30,8 @@ function getRewards(gamesToUpdate, gamesCountsByHits) {
   const X = totalReward / divisor;
   rewards.forEach((_reward, i) => {
     if (i < 2) return;
-    rewards[i] = X / PROBABILITIES[i];
+    rewards[i] =
+      gamesCountsByHits[i] === 0 ? 0 : Math.round(X / PROBABILITIES[i]);
   });
   return rewards;
 }
@@ -53,6 +53,7 @@ function updateGames(state) {
   gamesToUpdate.forEach((game) => {
     game.creditReward = rewards[game.numberOfHits];
   });
+  return { gamesCountsByHits, rewards };
 }
 
 function payRewards(state) {
@@ -68,7 +69,8 @@ function payRewards(state) {
 export function draw(state, setState) {
   const newState = JSON.parse(JSON.stringify(state));
   newState.draws.push(getWinningNumbers());
-  updateGames(newState);
+  const drawInfo = updateGames(newState);
   payRewards(newState);
   setState(newState);
+  return drawInfo;
 }
