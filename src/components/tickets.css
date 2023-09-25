@@ -1,3 +1,4 @@
 .buttons.tickets {
-  margin: 0.5em;
+  width: 100%;
+  margin: 0.5em auto;
 }
