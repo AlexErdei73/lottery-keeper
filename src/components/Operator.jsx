@@ -2,7 +2,7 @@ import { useState } from "react";
 import Header from "./Header";
 import GameImage from "./GameImage";
 import Modal from "./Modal";
-import { draw } from "../gamelogic/operator";
+import { draw, simulateGames } from "../gamelogic/operator";
 
 const Operator = ({ state, setState, goBack }) => {
 	const [drawReport, setDrawReport] = useState({
@@ -28,6 +28,7 @@ const Operator = ({ state, setState, goBack }) => {
 		const payouts = drawInfo.rewards.map(
 			(reward, hits) => reward * drawInfo.gamesCountsByHits[hits]
 		);
+		const totalPayout = payouts.reduce((acc, payout) => acc + payout, 0);
 		const revenue = gamesCounts * 500;
 		setDrawReport({
 			rewards: drawInfo.rewards,
@@ -35,7 +36,8 @@ const Operator = ({ state, setState, goBack }) => {
 			payouts,
 			gamesCounts,
 			revenue,
-			profit: revenue - payouts.reduce((acc, payout) => acc + payout, 0),
+			totalPayout,
+			profit: revenue - totalPayout,
 			numberOfCorrectGusses: drawInfo.gamesCountsByHits.reduce(
 				(acc, gamesCount, hits) => acc + gamesCount * hits,
 				0
@@ -50,7 +52,8 @@ const Operator = ({ state, setState, goBack }) => {
 
 	const handleSubmitGameNumber = (event) => {
 		event.preventDefault();
-		console.log(event.target[0].value);
+		const numberOfGames = event.target[0].value;
+		simulateGames(state, setState, numberOfGames);
 		closeSimuModal();
 	};
 
@@ -93,6 +96,9 @@ const Operator = ({ state, setState, goBack }) => {
 					Revenue: <output>{drawReport.revenue}</output>
 				</div>
 				<div>
+					Total Payout: <output>{drawReport.totalPayout}</output>
+				</div>
+				<div>
 					Profit: <output>{drawReport.profit}</output>
 				</div>
 				<div>
@@ -118,7 +124,7 @@ const Operator = ({ state, setState, goBack }) => {
 						<input
 							type="number"
 							min="1"
-							max="10000000"
+							max="10000"
 							id="number"
 							defaultValue="1"
 						/>
