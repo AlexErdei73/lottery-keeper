@@ -13,7 +13,7 @@ const TicketModal = ({ openModal, closeModal, game, index }) => {
           <div>Numbers: {game.numbers.join(", ")}</div>
           <div>Winning Numbers: {game.winningNumbers.join(", ")}</div>
           <div>Played by: {game.isPlayer ? "Player" : "Computer"}</div>
-          <div>Draw: {game.drawIndex}</div>
+          <div>Draw: {game.drawIndex + 1}</div>
           <div>
             Number of Hits: {getHitsCount(game.numbers, game.winningNumbers)}
           </div>
