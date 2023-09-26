@@ -5,6 +5,7 @@ import Modal from "./Modal";
 import Tickets from "./Tickets";
 import { draw, simulateGames } from "../gamelogic/operator";
 import { INITIAL_STATE } from "../helper";
+import "./operator.css";
 
 const Operator = ({ state, setState, goBack }) => {
   const [drawReport, setDrawReport] = useState({
@@ -104,22 +105,35 @@ const Operator = ({ state, setState, goBack }) => {
         closeModal={closeModal}
         headerText="Draw Info"
       >
-        <div>
-          Rewards: <output>{drawReport.rewards.join(", ")}</output>
-        </div>
-        <div>
-          Games Counts By Hits:{" "}
-          <output>{drawReport.gamesCountsByHits.join(", ")}</output>
-        </div>
-        <div>
-          Payouts: <output>{drawReport.payouts.join(", ")}</output>
-        </div>
-        <div>
-          Games Counts: <output>{drawReport.gamesCounts}</output>
-        </div>
-        <div>
-          Revenue: <output>{drawReport.revenue}</output>
-        </div>
+        <table>
+          <tr>
+            <th>Hits</th>
+            <th>0</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+          </tr>
+          <tr>
+            <th>Game Count</th>
+            {drawReport.gamesCountsByHits.map((count, i) => (
+              <td key={i}>{count}</td>
+            ))}
+          </tr>
+          <tr>
+            <th>Reward</th>
+            {drawReport.rewards.map((reward, i) => (
+              <td key={i}>{reward}</td>
+            ))}
+          </tr>
+          <tr>
+            <th>Payout</th>
+            {drawReport.payouts.map((payout, i) => (
+              <td key={i}>{payout}</td>
+            ))}
+          </tr>
+        </table>
         <div>
           Total Payout: <output>{drawReport.totalPayout}</output>
         </div>

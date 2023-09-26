@@ -139,6 +139,10 @@
     should add up to one always, if you take into account all the possibilities. It is an opportunity to check
     numerical results. The problem has a lot of points like this, but tests would be the best.
 
+## What is addressed from the above
+
+    * 1. I have added the HTML table to the output of draw report. It has made it look better.
+
 ## React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

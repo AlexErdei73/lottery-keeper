@@ -4,6 +4,7 @@ dialog {
   border: 2px solid var(--link-color);
   border-radius: 0.5em;
   width: 20em;
+  min-width: min-content;
   color: var(--color);
   background-color: var(--background-color);
   position: fixed;
