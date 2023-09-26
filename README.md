@@ -117,6 +117,28 @@
     timeframe is short and accessibility and usability of the UI is more important than the look, so I choose
     this solution.
 
+## What are those things, which I would have done if I had a little more time?
+
+    * 1. Some of the data in the draw report should be in the form of a table, because these values depend on
+    the number of hits. The user should be able to sort this data according any row or column depending on
+    the orientation of the table.
+
+    * 2. I planned to add a footer with a little animation.
+
+    * 3. The responsive design needs to be fine tuned with some media queries and a little CSS. It should be
+    working for upto 400% zoom and large font sizes. We should be able to go down to 300px x 250px viewport
+    sizes without any problem even with 400% zoom or 200% zoom and 32px base font-size. It takes time and I
+    run out of time, so this work is missing. This is requirement for complying with the WCAG AA standard too.
+
+    * 4. I planned to add some tests with Jest, especially for the game logic. Although I did manual test on
+    everything, automated tests has their advantages. We could just trust the calculations much better if I
+    had those tests. Unfortunately that takes time too. The math is well thought over and this task provides
+    a lot of places to check on the numerical results. I tried to use chatGPT to calculate the numerical
+    values of the probabilities. Do not do it. I asked it 5 times, pointing out, that the results are very bad.
+    Even after long conversation it was unable to give me probabilities, which add up to one. Probabilities
+    should add up to one always, if you take into account all the possibilities. It is an opportunity to check
+    numerical results. The problem has a lot of points like this, but tests would be the best.
+
 ## React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
