@@ -6,7 +6,7 @@ dialog {
   width: 20em;
   color: var(--color);
   background-color: var(--background-color);
-  position: relative;
+  position: fixed;
 }
 
 dialog[open] {
