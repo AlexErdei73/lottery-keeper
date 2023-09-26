@@ -4,6 +4,7 @@ import GameImage from "./GameImage";
 import Modal from "./Modal";
 import Tickets from "./Tickets";
 import { draw, simulateGames } from "../gamelogic/operator";
+import { INITIAL_STATE } from "../helper";
 
 const Operator = ({ state, setState, goBack }) => {
   const [drawReport, setDrawReport] = useState({
@@ -61,6 +62,11 @@ const Operator = ({ state, setState, goBack }) => {
 
   const handleTicketsClick = () => setShowTickets(true);
   const showOperatorPage = () => setShowTickets(false);
+  const handleResetClick = () => {
+    window.localStorage.removeItem("state");
+    setState(INITIAL_STATE);
+    goBack();
+  };
 
   return (
     <>
@@ -76,6 +82,9 @@ const Operator = ({ state, setState, goBack }) => {
             </button>
             <button type="button" onClick={handleTicketsClick}>
               Tickets
+            </button>
+            <button type="button" onClick={handleResetClick}>
+              Reset
             </button>
             <button type="button" onClick={goBack}>
               Back
