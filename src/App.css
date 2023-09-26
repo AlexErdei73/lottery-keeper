@@ -1,56 +1,71 @@
 #root {
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+	margin: 0 auto;
+	padding: 2rem;
+	text-align: center;
 }
 
 .app {
-  opacity: 0;
-  transform: translateY(-5em);
-  transition: all 600ms ease-in;
+	opacity: 0;
+	transform: translateY(-5em);
+	transition: all 600ms ease-in;
 }
 
 .show {
-  opacity: 1;
-  transform: none;
+	opacity: 1;
+	transform: none;
 }
 
 .img-container {
-  width: 30rem;
-  max-width: 70vw;
-  margin: 0.5rem auto;
+	width: 30rem;
+	max-width: 70vw;
+	margin: 0.5rem auto;
 }
 
 .landing-img {
-  height: auto;
-  width: 100%;
-  border-radius: 0.5rem;
+	height: auto;
+	width: 100%;
+	border-radius: 0.5rem;
 }
 
 h1 {
-  font-size: 2em;
-  transition: color 600ms linear;
+	font-size: 2em;
+	transition: color 600ms linear;
 }
 
 .color-change {
-  color: var(--link-color);
+	color: var(--link-color);
 }
 
 dialog .buttons {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5rem;
+	display: flex;
+	justify-content: space-between;
+	padding: 0.5rem;
 }
 
 .form-input {
-  display: flex;
-  justify-content: center;
-  padding: 0.5em;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 0.5em;
 }
 
 .buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5em;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.5em;
+}
+
+@media (max-width: 25em) {
+	dialog,
+	input,
+	header {
+		font-size: clamp(12px, 1vw, 1em);
+	}
+
+	#root,
+	main {
+		padding: 0 !important;
+		margin-top: 4.5em !important;
+	}
 }
