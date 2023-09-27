@@ -146,6 +146,8 @@
     * 3. I have made it work with a media query and some CSS for
     even as small size as 300px X 250px.
 
+    * 2. I have added a Footer component to the app.
+
 ## React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and
