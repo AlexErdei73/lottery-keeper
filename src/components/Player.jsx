@@ -3,6 +3,7 @@ import Modal from "./Modal";
 import GameImage from "./GameImage";
 import Tickets from "./Tickets";
 import Header from "./Header";
+import Footer from "./Footer";
 import { areNumbersValid } from "../gamelogic/general";
 import { submitNumbers } from "../gamelogic/player";
 import "./player.css";
@@ -102,6 +103,7 @@ const Player = ({ state, setState, goBack }) => {
             </button>
           </div>
           <GameImage />
+          <Footer />
         </main>
       )}
       {showTickets && (

@@ -3,6 +3,7 @@ import Header from "./Header";
 import GameImage from "./GameImage";
 import Modal from "./Modal";
 import Tickets from "./Tickets";
+import Footer from "./Footer";
 import { draw, simulateGames } from "../gamelogic/operator";
 import { INITIAL_STATE } from "../helper";
 import "./operator.css";
@@ -92,6 +93,7 @@ const Operator = ({ state, setState, goBack }) => {
             </button>
           </div>
           <GameImage />
+          <Footer />
         </main>
       )}
       {showTickets && (

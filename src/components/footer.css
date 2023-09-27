@@ -1,0 +1,24 @@
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100rem;
+  background-color: black;
+  border-top: 2px solid var(--link-color);
+  overflow: hidden;
+}
+
+footer div {
+  min-width: max-content;
+  animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(calc(-50% - 8.5em));
+  }
+  to {
+    transform: translateX(calc(50% + 8.5em));
+  }
+}

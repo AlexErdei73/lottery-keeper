@@ -1,0 +1,16 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: black;
+  border-bottom: 2px solid var(--link-color);
+}
+
+header h1 {
+  margin: 0.5em 0;
+}
