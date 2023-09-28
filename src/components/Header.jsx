@@ -5,11 +5,13 @@ const Header = ({ role }) => {
     <>
       <header>
         <h1 className="color-change">
-          <output>{role.name}</output>
+          <output>{role ? role.name : "Lotto Keeper"}</output>
         </h1>
-        <div className="balance color-change">
-          Credit: <output>{role.balance}</output>
-        </div>
+        {role && (
+          <div className="balance color-change">
+            Credit: <output>{role.balance}</output>
+          </div>
+        )}
       </header>
     </>
   );

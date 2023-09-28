@@ -4,13 +4,13 @@
   text-align: center;
 }
 
-.app {
+.app main {
   opacity: 0;
   transform: translateY(-5em);
   transition: all 600ms ease-in;
 }
 
-.show {
+.app main.show {
   opacity: 1;
   transform: none;
 }
@@ -25,11 +25,6 @@
   height: auto;
   width: 100%;
   border-radius: 0.5rem;
-}
-
-h1 {
-  font-size: 2em;
-  transition: color 600ms linear;
 }
 
 .color-change {
@@ -56,6 +51,12 @@ dialog .buttons {
   gap: 0.5em;
 }
 
+main p {
+  width: 30rem;
+  max-width: 70vw;
+  margin: auto;
+}
+
 @media (max-width: 25em) {
   dialog,
   input,
@@ -67,6 +68,10 @@ dialog .buttons {
   main {
     padding: 0 !important;
     margin-top: 4.5em !important;
+  }
+
+  footer {
+    display: none;
   }
 }
 

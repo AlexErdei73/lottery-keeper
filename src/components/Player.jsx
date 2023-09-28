@@ -83,33 +83,38 @@ const Player = ({ state, setState, goBack }) => {
     <>
       <Header role={state.player} />
       {!showTickets && (
-        <main>
-          <div className="buttons">
-            <button type="button" onClick={handleNameClick}>
-              Name
-            </button>
-            <button type="button" onClick={handleGameClick}>
-              Game
-            </button>
-            <button
-              type="button"
-              onClick={handleTicketsClick}
-              disabled={state.games.length === 0}
-            >
-              Tickets
-            </button>
-            <button type="button" onClick={goBack}>
-              Back
-            </button>
-          </div>
-          <GameImage />
+        <>
+          <main className="show">
+            <div className="buttons">
+              <button type="button" onClick={handleNameClick}>
+                Name
+              </button>
+              <button type="button" onClick={handleGameClick}>
+                Game
+              </button>
+              <button
+                type="button"
+                onClick={handleTicketsClick}
+                disabled={state.games.length === 0}
+              >
+                Tickets
+              </button>
+              <button type="button" onClick={goBack}>
+                Back
+              </button>
+            </div>
+            <GameImage />
+          </main>
           <Footer />
-        </main>
+        </>
       )}
       {showTickets && (
-        <main>
-          <Tickets state={state} goBack={showPlayersPage} />
-        </main>
+        <>
+          <main className="show">
+            <Tickets state={state} goBack={showPlayersPage} />
+          </main>
+          <Footer />
+        </>
       )}
 
       <Modal

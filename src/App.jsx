@@ -4,6 +4,8 @@ import Modal from "./components/Modal";
 import Player from "./components/Player";
 import Operator from "./components/Operator";
 import GameImage from "./components/GameImage";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 import { INITIAL_STATE } from "./helper";
 
 function App() {
@@ -38,20 +40,30 @@ function App() {
   const handleBackClick = () => setPage("opening");
 
   /* Little opening animation */
-  const appNode = useRef();
+  const mainNode = useRef();
   useEffect(() => {
     setTimeout(() => {
-      appNode.current.classList.add("show");
+      mainNode.current.classList.add("show");
     }, 0);
   }, []);
 
   const openingPage = (
     <>
-      <h1 className="color-change">Lotto Keeper</h1>
-      <GameImage />
-      <button type="button" onClick={() => setOpenModal(true)}>
-        Entrance
-      </button>
+      <Header />
+      <main ref={mainNode}>
+        <p>
+          It is a lottery simulation game. As a player you start with 10000
+          credits and you can buy game tickets. You may make profit if you win.
+          As an operator you start with 0 credits and you trigger the draw. You
+          also can simulate game tickets by the computer and keep the profit.
+          Your goal is to make credit in both case.
+        </p>
+        <GameImage />
+        <button type="button" onClick={() => setOpenModal(true)}>
+          Entrance
+        </button>
+      </main>
+      <Footer />
       <Modal
         openModal={openModal}
         closeModal={closeModal}
@@ -71,7 +83,7 @@ function App() {
   );
 
   return (
-    <div className="app" ref={appNode}>
+    <div className="app">
       {page === "opening" && openingPage}
       {page === "player" && (
         <Player
