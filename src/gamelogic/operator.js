@@ -1,6 +1,6 @@
 import { getHitsCount } from "./general";
 
-function getWinningNumbers() {
+export function getWinningNumbers() {
 	const LENGTH = 5;
 	const winningNumbers = [];
 	while (winningNumbers.length < LENGTH) {
@@ -66,9 +66,9 @@ function payRewards(state) {
 	});
 }
 
-export function draw(state, setState) {
+export function draw(state, setState, winningNumbers) {
 	const newState = JSON.parse(JSON.stringify(state));
-	newState.draws.push(getWinningNumbers());
+	newState.draws.push(winningNumbers);
 	const drawInfo = updateGames(newState);
 	payRewards(newState);
 	setState(newState);
