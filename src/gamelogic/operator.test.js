@@ -3,8 +3,8 @@ import { INITIAL_STATE } from "../helper";
 import { draw, getWinningNumbers, simulateGames } from "./operator";
 import { areNumbersValid } from "./general";
 
-let state = JSON.parse(JSON.stringify(INITIAL_STATE));
-let newState = JSON.parse(JSON.stringify(INITIAL_STATE));
+let state;
+let newState;
 const setState = (newState) => (state = newState);
 const INITIAL_GAME = {
 	isPlayer: true,
