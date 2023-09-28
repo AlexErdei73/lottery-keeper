@@ -9,17 +9,17 @@ function Modal({ openModal, closeModal, children, headerText = "Dialog" }) {
   useEffect(() => {
     if (openModal) {
       dialog.current.showModal();
-      dialog.current.style.animation = "600ms fadeIn";
-      cover.current.style = "display: flex";
+      dialog.current.classList.add("animate");
+      cover.current.classList.add("open");
       setTimeout(() => {
-        dialog.current.style.animation = "";
+        dialog.current.classList.remove("animate");
       }, 600);
     } else {
-      dialog.current.style.animation = "600ms reverse fadeIn";
+      dialog.current.classList.add("animate-back");
       setTimeout(() => {
         dialog.current.close();
-        dialog.current.style = "";
-        cover.current.style = "";
+        dialog.current.classList.remove("animate-back");
+        cover.current.classList.remove("open");
       }, 600);
     }
   }, [openModal]);

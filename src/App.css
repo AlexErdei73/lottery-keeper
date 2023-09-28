@@ -91,4 +91,12 @@ main p {
   footer div {
     animation: none !important;
   }
+
+  .animate {
+    animation: 600ms fadeIn !important;
+  }
+
+  .animate-back {
+    animation: 600ms reverse fadeIn !important;
+  }
 }

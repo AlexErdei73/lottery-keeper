@@ -54,7 +54,19 @@ dialog .body {
   opacity: 0.9;
 }
 
-@keyframes fadeIn {
+.cover.open {
+  display: flex;
+}
+
+.animate {
+  animation: 600ms slideIn;
+}
+
+.animate-back {
+  animation: 600ms reverse slideIn;
+}
+
+@keyframes slideIn {
   from {
     opacity: 0.5;
     transform: translateY(-5em);
@@ -62,5 +74,15 @@ dialog .body {
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
