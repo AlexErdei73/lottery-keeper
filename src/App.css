@@ -6,7 +6,7 @@
 
 .app main {
   opacity: 0;
-  transform: translateY(-5em);
+  transform: translateX(-10em);
   transition: all 600ms ease-in;
 }
 
@@ -79,5 +79,16 @@ main p {
   header,
   footer {
     left: calc((100vw - 100rem) / 2);
+  }
+}
+
+@media (prefers-reduced-motion) {
+  .app main {
+    transform: none;
+    transition: opacity 600ms ease-in;
+  }
+
+  footer div {
+    animation: none !important;
   }
 }
