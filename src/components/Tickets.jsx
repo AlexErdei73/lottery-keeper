@@ -58,11 +58,9 @@ const Tickets = ({ state, goBack, option = "player" }) => {
             Sort
           </button>
         )}
-        {option !== "player" && (
-          <button type="button" onClick={handleInfoClick}>
-            Info
-          </button>
-        )}
+        <button type="button" onClick={handleInfoClick}>
+          Info
+        </button>
         <button type="button" onClick={goBack}>
           Back
         </button>
@@ -125,6 +123,7 @@ const Tickets = ({ state, goBack, option = "player" }) => {
         drawIndex={drawIndex}
         openModal={openDrawInfoModal}
         closeModal={() => setOpenDrawInfoModal(false)}
+        option={option}
       />
     </>
   );

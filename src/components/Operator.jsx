@@ -85,6 +85,7 @@ const Operator = ({ state, setState, goBack }) => {
         drawIndex={state.draws.length - 1}
         openModal={openModal}
         closeModal={closeModal}
+        option="operator"
       />
 
       <Modal
