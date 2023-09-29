@@ -42,6 +42,7 @@ function App() {
   /* Little opening animation */
   const mainNode = useRef();
   useEffect(() => {
+    if (!mainNode.current) return;
     setTimeout(() => {
       mainNode.current.classList.add("show");
     }, 0);

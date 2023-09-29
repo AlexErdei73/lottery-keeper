@@ -7,6 +7,7 @@ export const INITIAL_STATE = {
     name: "Operator",
     balance: 0,
   },
+  drawInfos: [],
   draws: [],
   games: [],
 };
