@@ -57,6 +57,10 @@ main p {
   margin: auto;
 }
 
+.footer-info {
+  display: none;
+}
+
 @media (max-width: 25em) {
   dialog,
   input,
@@ -73,12 +77,23 @@ main p {
   footer {
     display: none;
   }
+
+  .footer-info {
+    display: block;
+    margin: 0.5em;
+    font-size: 50%;
+  }
 }
 
 @media (min-width: 100rem) {
   header,
   footer {
-    left: calc((100vw - 100rem) / 2);
+    left: calc((100vw - 100rem) / 2) !important;
+  }
+
+  footer {
+    top: 40em;
+    height: 1.5em;
   }
 }
 
