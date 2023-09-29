@@ -2,7 +2,7 @@ import Modal from "./Modal";
 
 const DrawInfoModal = ({ state, drawIndex, openModal, closeModal }) => {
   const drawInfo =
-    drawIndex > -1
+    drawIndex > -1 && drawIndex < state.drawInfos.length
       ? state.drawInfos[drawIndex]
       : { gamesCountsByHits: [0, 0, 0, 0, 0, 0], rewards: [0, 0, 0, 0, 0, 0] };
 
@@ -27,8 +27,9 @@ const DrawInfoModal = ({ state, drawIndex, openModal, closeModal }) => {
       (acc, gamesCount, hits) => acc + gamesCount * hits,
       0
     ),
-    payoutPerTicket:
-      payouts.reduce((acc, payout) => acc + payout, 0) / gamesCounts,
+    payoutPerTicket: gamesCounts
+      ? payouts.reduce((acc, payout) => acc + payout, 0) / gamesCounts
+      : 0,
   };
 
   return (
