@@ -1,4 +1,6 @@
+import { useState } from "react";
 import Modal from "./Modal";
+import "./drawInfoModal.css";
 
 const DrawInfoModal = ({
   state,
@@ -7,6 +9,7 @@ const DrawInfoModal = ({
   closeModal,
   option = "player",
 }) => {
+  const [numberOfHits, setNumberOfHits] = useState([0, 1, 2, 3, 4, 5]);
   const drawInfo =
     drawIndex > -1 && drawIndex < state.drawInfos.length
       ? state.drawInfos[drawIndex]
@@ -52,6 +55,31 @@ const DrawInfoModal = ({
       : 0,
   };
 
+  function rearrange(array) {
+    return numberOfHits.map((i) => array[i]);
+  }
+
+  const handleHitsClick = () => setNumberOfHits([0, 1, 2, 3, 4, 5]);
+  const handleGameCountClick = () => {
+    const newNumberOfHits = [...numberOfHits];
+    newNumberOfHits.sort(
+      (hitsA, hitsB) => gamesCountsByHits[hitsB] - gamesCountsByHits[hitsA]
+    );
+    setNumberOfHits(newNumberOfHits);
+  };
+  const handleRewardClick = () => {
+    const newNumberOfHits = [...numberOfHits];
+    newNumberOfHits.sort(
+      (hitsA, hitsB) => drawReport.rewards[hitsB] - drawReport.rewards[hitsA]
+    );
+    setNumberOfHits(newNumberOfHits);
+  };
+  const handlePayoutsClick = () => {
+    const newNumberOfHits = [...numberOfHits];
+    newNumberOfHits.sort((hitsA, hitsB) => payouts[hitsB] - payouts[hitsA]);
+    setNumberOfHits(newNumberOfHits);
+  };
+
   return (
     <Modal
       openModal={openModal && drawIndex > -1}
@@ -61,31 +89,44 @@ const DrawInfoModal = ({
       <table>
         <thead>
           <tr>
-            <th>Hits</th>
-            <th>0</th>
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-            <th>5</th>
+            <th>
+              <button type="button" onClick={handleHitsClick}>
+                Hits
+              </button>
+            </th>
+            {numberOfHits.map((hits) => (
+              <th>{hits}</th>
+            ))}
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th>Game Count</th>
-            {drawReport.gamesCountsByHits.map((count, i) => (
+            <th>
+              <button type="button" onClick={handleGameCountClick}>
+                Game Count
+              </button>
+            </th>
+            {rearrange(drawReport.gamesCountsByHits).map((count, i) => (
               <td key={i}>{count}</td>
             ))}
           </tr>
           <tr>
-            <th>Reward</th>
-            {drawReport.rewards.map((reward, i) => (
+            <th>
+              <button type="button" onClick={handleRewardClick}>
+                Reward
+              </button>
+            </th>
+            {rearrange(drawReport.rewards).map((reward, i) => (
               <td key={i}>{reward}</td>
             ))}
           </tr>
           <tr>
-            <th>Payout</th>
-            {drawReport.payouts.map((payout, i) => (
+            <th>
+              <button type="button" onClick={handlePayoutsClick}>
+                Payout
+              </button>
+            </th>
+            {rearrange(drawReport.payouts).map((payout, i) => (
               <td key={i}>{payout}</td>
             ))}
           </tr>
