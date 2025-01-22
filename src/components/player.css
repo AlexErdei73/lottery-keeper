@@ -1,55 +1,94 @@
 .number-inputs {
-  display: flex;
-  flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .number-inputs input {
-  width: 2.5em;
+	width: 2.5em;
 }
 
 .balance {
-  padding: 0.5em;
-  border: 2px solid;
-  border-radius: 0.5rem;
-  width: max-content;
-  margin: 0.5em;
+	padding: 0.5em;
+	border: 2px solid;
+	border-radius: 0.5rem;
+	width: max-content;
+	margin: 0.5em;
 }
 
 main {
-  margin-top: 3em;
-  padding: 0.5em;
+	margin-top: 3em;
+	padding: 0.5em;
 }
 
 /* Lottery Ticket Styling */
 
 .number-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.375em;
-  margin: 1.25em 0;
-  justify-content: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.375em;
+	margin: 1.25em 0;
+	justify-content: center;
 }
 
 .number-button {
-  width: 2.25em;
-  height: 2.25em;
-  font-size: 1em;
-  padding: 0;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.1s;
+	width: 2.25em;
+	height: 2.25em;
+	font-size: 1em;
+	padding: 0;
+	cursor: pointer;
+	transition: background-color 0.3s, transform 0.1s;
 }
 
 .number-button.selected {
-  color: var(--link-color);
-  border-color: var(--link-hover-color);
+	color: var(--link-color);
+	border-color: var(--link-hover-color);
 }
 
 .number-button:disabled {
-  cursor: not-allowed;
+	cursor: not-allowed;
 }
 
 .selected-numbers {
-  margin: 0.625em 0;
-  text-align: center;
-  font-size: 1.125em;
+	margin: 0.625em 0;
+	text-align: center;
+	font-size: 1.125em;
 }
+
+/* Responsive Design 
+@media (max-width: 37.5em) {
+  dialog form {
+    font-size: 50%;
+  }
+
+  dialog p {
+    font-size: 50%;
+  }
+
+  form p {
+    font-size: 100%;
+  }
+}
+
+@media (orientation: portrait) {
+  dialog form {
+    font-size: 100%;
+  }
+
+  dialog p {
+    font-size: 100%;
+  }
+}
+
+@media (orientation: landscape) {
+  dialog form {
+    font-size: 50%;
+  }
+
+  dialog p {
+    font-size: 50%;
+  }
+
+  form p {
+    font-size: 100%;
+  }
+} */
