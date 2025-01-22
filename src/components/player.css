@@ -19,3 +19,37 @@ main {
   margin-top: 3em;
   padding: 0.5em;
 }
+
+/* Lottery Ticket Styling */
+
+.number-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375em;
+  margin: 1.25em 0;
+  justify-content: center;
+}
+
+.number-button {
+  width: 2.25em;
+  height: 2.25em;
+  font-size: 1em;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.number-button.selected {
+  color: var(--link-color);
+  border-color: var(--link-hover-color);
+}
+
+.number-button:disabled {
+  cursor: not-allowed;
+}
+
+.selected-numbers {
+  margin: 0.625em 0;
+  text-align: center;
+  font-size: 1.125em;
+}
