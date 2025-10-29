@@ -9,6 +9,7 @@ const Footer = () => {
           Code on GitHub
         </a>
       </div>
+      <div className="bottom"></div>
     </footer>
   );
 };

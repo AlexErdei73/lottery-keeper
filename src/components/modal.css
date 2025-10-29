@@ -52,6 +52,7 @@ dialog .body {
   height: 100vh;
   background-color: black;
   opacity: 0.9;
+  z-index: 1;
 }
 
 .cover.open {

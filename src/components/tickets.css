@@ -1,4 +1,7 @@
 .buttons.tickets {
   width: 100%;
-  margin: 0.5em auto;
+  padding: 0 0.5em;
+  margin: 0 auto;
+  max-width: 100rem;
+  padding-bottom: calc(100vh - 50rem);
 }

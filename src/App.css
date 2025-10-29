@@ -105,12 +105,17 @@ main p {
 @media (min-width: 100rem) {
 	header,
 	footer {
-		left: calc((100vw - 100rem) / 2) !important;
+		margin-left: calc(50vw - 50em) !important;
 	}
 
 	footer {
-		top: 40em;
-		height: 1.5em;
+		top: 50em;
+	}
+
+	.buttons.tickets {
+		left: calc(50vw - 51em) !important;
+		padding: 0 0.5em 0 1.75em !important;
+		max-width: 99rem !important;
 	}
 }
 
